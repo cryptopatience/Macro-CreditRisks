@@ -450,7 +450,7 @@ FULL_ANALYSIS:
         response = model.generate_content(
             prompt, 
             generation_config={
-                'max_output_tokens': 1024,
+                'max_output_tokens': 65536,
                 'temperature': 0.7
             },
             safety_settings=safety_settings
@@ -559,7 +559,7 @@ def generate_comprehensive_analysis(df, risk_info, depth="기본"):
     try:
         model = genai.GenerativeModel('gemini-2.5-flash')
         
-        max_tokens = 512 if depth == "요약" else 2048
+        max_tokens = 65536 if depth == "요약" else 2048
         
         safety_settings = [
             {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
@@ -738,7 +738,7 @@ def generate_comprehensive_analysis_deep_dive(df, risk_info):
         response = model.generate_content(
             prompt, 
             generation_config={
-                'max_output_tokens': 4096,  # 딥다이브는 더 긴 응답
+                'max_output_tokens': 65536,  # 딥다이브는 더 긴 응답
                 'temperature': 0.7
             },
             safety_settings=safety_settings
@@ -834,7 +834,7 @@ def generate_indicator_analysis(df, indicator_name, depth="기본"):
     
     try:
         model = genai.GenerativeModel('gemini-2.5-flash')
-        tokens = 2048 if depth == "딥다이브" else 1024
+        tokens = 65536 if depth == "딥다이브" else 2048
         
         safety_settings = [
             {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
@@ -907,7 +907,7 @@ def generate_chat_response(df, risk_info, user_question, history):
         response = model.generate_content(
             prompt, 
             generation_config={
-                'max_output_tokens': 1024,
+                'max_output_tokens': 65536,
                 'temperature': 0.8
             },
             safety_settings=safety_settings
