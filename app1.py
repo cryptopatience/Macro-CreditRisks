@@ -19,12 +19,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-st.set_page_config(
-    page_title="매크로 credit risk (과거 경제반영 후행지표)",
-    page_icon="🏦",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+
 
 # 페이지 제목과 부제목 추가
 st.title("🏦 매크로 credit risk (과거 경제반영 후행지표)")
@@ -443,7 +438,7 @@ FULL_ANALYSIS:
 """
     
     try:
-        model = genai.GenerativeModel('gemini-2.0-flash-exp')
+        model = genai.GenerativeModel('gemini-2.5-flash')
         
         safety_settings = [
             {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
@@ -562,7 +557,7 @@ def generate_comprehensive_analysis(df, risk_info, depth="기본"):
 """
     
     try:
-        model = genai.GenerativeModel('gemini-2.0-flash-exp')
+        model = genai.GenerativeModel('gemini-2.5-flash')
         
         max_tokens = 512 if depth == "요약" else 2048
         
@@ -731,7 +726,7 @@ def generate_comprehensive_analysis_deep_dive(df, risk_info):
 """
     
     try:
-        model = genai.GenerativeModel('gemini-2.0-flash-exp')
+        model = genai.GenerativeModel('gemini-2.5-flash')
         
         safety_settings = [
             {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
@@ -838,7 +833,7 @@ def generate_indicator_analysis(df, indicator_name, depth="기본"):
 """
     
     try:
-        model = genai.GenerativeModel('gemini-2.0-flash-exp')
+        model = genai.GenerativeModel('gemini-2.5-flash')
         tokens = 2048 if depth == "딥다이브" else 1024
         
         safety_settings = [
@@ -900,7 +895,7 @@ def generate_chat_response(df, risk_info, user_question, history):
 """
     
     try:
-        model = genai.GenerativeModel('gemini-2.0-flash-exp')
+        model = genai.GenerativeModel('gemini-2.5-flash')
         
         safety_settings = [
             {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
